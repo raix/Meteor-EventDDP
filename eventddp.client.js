@@ -75,6 +75,23 @@ EventDDP.prototype.addListener = function(name, f) {
   return self;
 };
 
+EventDDP.prototype.once = function(name, f) {
+  var self = this;
+
+  self.eventEmitter.once(name, f);
+
+  return self;
+};
+
+EventDDP.prototype.removeListener = function(name, f) {
+  var self = this;
+
+  self.eventEmitter.removeListener(name, f);
+
+  return self;
+};
+
+
 EventDDP.prototype.emit = function(/* arguments */) {
   var self = this;
 
