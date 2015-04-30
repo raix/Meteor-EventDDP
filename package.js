@@ -1,8 +1,8 @@
 Package.describe({
-  name: "raix:eventddp",
-  version: '0.0.1',
+  name: "flyandi:eventddp",
+  version: '0.0.3',
   summary: "A server and client event package, events via ddp.",
-  git: "https://github.com/raix/Meteor-EventDDP.git"
+  git: "https://github.com/flyandi/Meteor-EventDDP.git"
 });
 
 Package.onUse(function (api) {
@@ -19,12 +19,15 @@ Package.onUse(function (api) {
 
   api.addFiles('eventddp.server.js', 'server');
 
-  api.export('EventDDP')
+  api.addFiles('eventddp.remote.js', 'server');
+
+  api.export('EventDDP');
+  api.export('RemoteEventDDP', 'server');
 });
 
 
 Package.onTest(function (api) {
-  api.use(['raix:eventddp']);
+  api.use(['flyandi:eventddp']);
   api.use('test-helpers', ['server', 'client']);
   api.use('tinytest');
 

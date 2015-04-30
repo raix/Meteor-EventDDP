@@ -1,9 +1,18 @@
-raix:eventddp
+flyandi:eventddp
 ==============
 
-This package adds events over ddp, so you can emit and listen to events from client and server.
+This package is based on raix:eventddp and extends it to allow the server to act as a client for server to server communication.
+
+This package adds events over ddp, so you can emit and listen to events from client to server and server to server.
+
+### Installation
+
+Install this package via ```meteor add flyandi:eventddp```
 
 
+### Usage
+
+On the client:
 ```js
   var ddpEvents = new EventDDP('raix:push', Meteor.connection);
 
@@ -44,6 +53,25 @@ On the server:
         // check client.foo
     }
   });
+```
+
+### Server to Server
+
+RemoveEventDDP allows to send events between two servers. One server act as actual server as shown above while any other server is using RemoveEventDDP to connect to it. Any connecting server is basically a "client".
+
+```js
+  var ddpEvents = new RemoteEventDDP('raix:push', 'http://url-to-meteor-application');
+
+  // Add listener
+  ddpEvents.addListener('message', function(message) {
+    console.log(message);
+  });
+```
+
+On the actual server:
+
+```js
+ ddpEvents.emit("message", "Hi!");
 ```
 
 
@@ -110,9 +138,3 @@ Example of how the matcher works, you might find it useful in other projects:
   match.documentMatches({ a: 1 }); // { result: false }
   match.documentMatches({ a: 6 }); // { result: true }
 ```
-
-### TODO:
-* [ ] Write the full api
-* [ ] Write complete test coverage
-
-Kind regards Morten
