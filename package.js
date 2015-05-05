@@ -1,6 +1,6 @@
 Package.describe({
   name: "raix:eventddp",
-  version: '0.0.1',
+  version: '0.0.2',
   summary: "A server and client event package, events via ddp.",
   git: "https://github.com/raix/Meteor-EventDDP.git"
 });
