@@ -7,7 +7,7 @@ This package adds events over ddp, so you can emit and listen to events from cli
 ```js
   var ddpEvents = new EventDDP('raix:push', Meteor.connection);
 
-  var ddpEvents.addListener('push', function(message) {
+  ddpEvents.addListener('push', function(message) {
     // Got message
     // Use the notification api to display a nice native notification?
     alert(message);
