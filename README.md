@@ -1,3 +1,5 @@
+DEPRECATING: No longer maintained
+
 raix:eventddp
 ==============
 
